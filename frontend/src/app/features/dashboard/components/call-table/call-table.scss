@@ -1,0 +1,95 @@
+.panel {
+  height: 100%;
+  border: 1px solid #dde5f2;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 16px 40px rgb(15 23 42 / 8%);
+  overflow: hidden;
+}
+
+.panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px;
+  border-bottom: 1px solid #edf2f7;
+}
+
+h2,
+p {
+  margin: 0;
+}
+
+p {
+  margin-top: 6px;
+  color: #64748b;
+}
+
+.count {
+  display: inline-grid;
+  min-width: 36px;
+  min-height: 36px;
+  place-items: center;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-weight: 800;
+}
+
+.empty-state {
+  padding: 28px 20px;
+  color: #64748b;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 14px 20px;
+  border-bottom: 1px solid #edf2f7;
+  text-align: left;
+  white-space: nowrap;
+}
+
+th {
+  color: #64748b;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.badge {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.ringing {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.in-call {
+  background: #dcfce7;
+  color: #047857;
+}
+
+.on-hold {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.transferring {
+  background: #ede9fe;
+  color: #6d28d9;
+}

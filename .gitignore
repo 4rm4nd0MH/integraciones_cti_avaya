@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.angular/
+.tools/
+
+build/
+.gradle/
+out/
+
+.idea/
+.vscode/
+*.log

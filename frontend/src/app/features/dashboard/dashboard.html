@@ -1,0 +1,59 @@
+<main class="dashboard">
+  <header class="hero">
+    <div>
+      <p class="eyebrow">CTI / AVAYA Mock</p>
+      <h1>Dashboard de llamadas en tiempo real</h1>
+      <p class="description">
+        Monitorea llamadas activas, agentes y extensiones usando REST para la carga inicial
+        y Server-Sent Events para los cambios en vivo.
+      </p>
+    </div>
+
+    <button type="button" class="refresh-button" (click)="refresh()">Actualizar REST</button>
+  </header>
+
+  <section class="status-grid" aria-label="Resumen de estado">
+    <article class="status-card">
+      <span>Backend</span>
+      <strong [class.ok]="store.backendUp()" [class.warn]="!store.backendUp()">
+        {{ store.backendUp() ? 'UP' : 'DOWN' }}
+      </strong>
+    </article>
+
+    <article class="status-card">
+      <span>CTI WebSocket</span>
+      <strong [class.ok]="store.ctiConnected()" [class.warn]="!store.ctiConnected()">
+        {{ store.ctiConnected() ? 'Conectado' : 'Desconectado' }}
+      </strong>
+    </article>
+
+    <article class="status-card">
+      <span>Llamadas activas</span>
+      <strong>{{ store.activeCallCount() }}</strong>
+    </article>
+
+    <article class="status-card">
+      <span>Agentes ocupados</span>
+      <strong>{{ store.busyAgentCount() }}</strong>
+    </article>
+  </section>
+
+  @if (store.loading()) {
+    <section class="feedback loading">Cargando información del backend...</section>
+  }
+
+  @if (store.error(); as error) {
+    <section class="feedback error">{{ error }}</section>
+  }
+
+  <section class="meta">
+    <span>Última actualización: {{ store.lastUpdatedAt() ? (store.lastUpdatedAt() | date: 'medium') : 'Pendiente' }}</span>
+    <span>Último heartbeat: {{ store.lastHeartbeatAt() ? (store.lastHeartbeatAt() | date: 'medium') : 'Sin heartbeat' }}</span>
+  </section>
+
+  <section class="content-grid">
+    <app-call-table [calls]="store.calls()" />
+    <app-agent-list [agents]="store.agents()" />
+    <app-extension-list [extensions]="store.extensions()" />
+  </section>
+</main>

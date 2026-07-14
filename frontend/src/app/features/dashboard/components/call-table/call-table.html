@@ -1,0 +1,42 @@
+<section class="panel">
+  <div class="panel-header">
+    <div>
+      <h2>Llamadas activas</h2>
+      <p>Estado actual de cada llamada enviada por el Mock CTI.</p>
+    </div>
+    <span class="count">{{ calls().length }}</span>
+  </div>
+
+  @if (calls().length === 0) {
+    <div class="empty-state">No hay llamadas activas en este momento.</div>
+  } @else {
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Call ID</th>
+            <th>Extensión</th>
+            <th>Agente</th>
+            <th>Teléfono</th>
+            <th>Estado</th>
+            <th>Actualizada</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (call of calls(); track call.callId) {
+            <tr>
+              <td>{{ call.callId }}</td>
+              <td>{{ call.extension }}</td>
+              <td>{{ call.agentId }}</td>
+              <td>{{ call.phoneNumber }}</td>
+              <td>
+                <span [class]="'badge ' + statusClass(call.status)">{{ call.status }}</span>
+              </td>
+              <td>{{ call.updatedAt | date: 'mediumTime' }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</section>

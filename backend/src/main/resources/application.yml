@@ -1,0 +1,31 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  application:
+    name: cti-dashboard-backend
+
+cti:
+  enabled: ${CTI_ENABLED:true}
+  websocket-url: ${CTI_WEBSOCKET_URL:ws://precook-overtone-syndrome.ngrok-free.dev}
+  reconnect-initial-delay: ${CTI_RECONNECT_INITIAL_DELAY:2s}
+  reconnect-max-delay: ${CTI_RECONNECT_MAX_DELAY:30s}
+
+app:
+  cors:
+    allowed-origins: ${APP_CORS_ALLOWED_ORIGINS:http://localhost:4200}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+logging:
+  level:
+    root: INFO
+    com.pruebafullstack.cti: DEBUG
