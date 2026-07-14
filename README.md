@@ -1,7 +1,5 @@
 # Prueba Fullstack CTI / AVAYA
 
-Solución base para la prueba técnica Full Stack Senior con integración CTI por WebSocket, backend Spring Boot y dashboard Angular en tiempo real.
-
 ## Validación rápida
 
 Desde la raíz del proyecto puedes ejecutar toda la validación local con:
@@ -39,8 +37,6 @@ URLs principales:
 ## Objetivo
 
 El sistema se conecta a un Mock CTI Server tipo AVAYA AES, recibe eventos de llamadas por WebSocket, mantiene el estado actual en memoria y expone esa información al frontend mediante REST y Server-Sent Events.
-
-La solución evita base de datos, autenticación, Kafka y Kubernetes porque la prueba explícitamente no los requiere.
 
 ## Arquitectura
 
